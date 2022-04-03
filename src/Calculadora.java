@@ -3,8 +3,7 @@
  * ejercicio del curso. En esta version la mayoria de las operaciones no estan
  * implementadas
  * 
- * @author Antonio Vallecillo
- * @version 0.1
+ * @author Nerea
  *
  */
 
@@ -24,8 +23,12 @@ public class Calculadora implements ICalculadora {
 	 * @param a :double -- el sumando 1
 	 * @param b :double -- el sumando 2
 	 * @return :double -- el resultado de la suma
+	 * @throws ArithmeticException if ((a + b) > Double.MAX_VALUE) //postcondicion
+	 *                             (large numbers)
 	 */
 	public double suma(double a, double b) {
+		if ((a + b) > Double.MAX_VALUE)
+			throw new ArithmeticException("No se puede operar con numeros tan grandes");
 		return a + b;
 	}
 
@@ -35,9 +38,12 @@ public class Calculadora implements ICalculadora {
 	 * 
 	 * @param a :double -- el numero del cual hay que detraer el parametro b
 	 * @param b :double -- el numero a restar al parametro a
-	 * @return :double -- el resultado de la resta
+	 * @return :double -- el resultado de la resta *@throws ArithmeticException if
+	 *         ((a - b) > Double.MAX_VALUE) //postcondicion (large numbers)
 	 */
 	public double resta(double a, double b) {
+		if ((a - b) > Double.MAX_VALUE)
+			throw new ArithmeticException("No se puede operar con numeros tan grandes");
 		return a - b;
 	}
 
@@ -48,8 +54,12 @@ public class Calculadora implements ICalculadora {
 	 * @param a :double -- el primer numero
 	 * @param b :double -- el segundo numero
 	 * @return :double -- el resultado del producto
+	 * @throws ArithmeticException if (a * b > Double.MAX_VALUE) //postcondicion
+	 *                             (large numbers)
 	 */
 	public double mult(double a, double b) {
+		if (a * b > Double.MAX_VALUE)
+			throw new ArithmeticException("No se puede operar con numeros tan grandes");
 		return a * b;
 	}
 
@@ -60,11 +70,15 @@ public class Calculadora implements ICalculadora {
 	 * @param a :double -- el dividendo
 	 * @param b :double -- el divisor
 	 * @return :double -- el resultado de la division
+	 * @throws ArithmeticException (if b==0) //precondition
+	 * @throws ArithmeticException (if (result*b!=a)) //postcondicion (large numbers
+	 *                             or lack of precision)
 	 */
 	public double divide(double a, double b) {
-		if (b == 0)
-			throw new ArithmeticException();
-		return a / b;
+		if (b == 0.0)
+			throw new ArithmeticException("No se puede dividir entre 0");
+		double result = a / b;
+		return result;
 	}
 
 	/**
@@ -72,10 +86,10 @@ public class Calculadora implements ICalculadora {
 	 * 
 	 * @param n :int -- numero del cual se quiere calcular el factorial
 	 * @return :int -- el factorial de n (n!)
-	 * @throws IllegalArgumentException
+	 * @throws IllegalArgumentException if (n < 0 || n >= 15) //precondition
 	 */
 	public int fact(int n) {
-		if (n < 0)
+		if (n < 0 || n >= 15)
 			throw new IllegalArgumentException("No se puede calcular el factorial de un número negativo");
 		return n > 0 ? n * fact(n - 1) : 1;
 	}
@@ -90,12 +104,12 @@ public class Calculadora implements ICalculadora {
 	public boolean esPrimo(int n) {
 		boolean primo = true;
 		int d = n - 1;
-		while (d > 1 ) {
+		while (d > 1) {
 			if (n % d == 0)
 				primo = false;
 			d--;
 		}
-		if (n < 0)
+		if (n < 2)
 			primo = false;
 		return primo;
 	}

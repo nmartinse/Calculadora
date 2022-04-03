@@ -7,27 +7,12 @@ import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TestCalculadora_nmartin {
 
 	private Calculadora c;
-
-	// Mensaje cuando empieza el Test
-	@BeforeAll
-	public static void empezarTest() {
-		System.out.println("Empezando el Testing de la clase Calculadora con JUnit 5");
-	}
-
-	// Mensaje cuando acba el test
-	@AfterAll
-	public static void terminarTest() {
-		System.out.println("Terminado el Testing de la clase Calculadora con JUnit 5");
-	}
 
 	// Antes de cada test inicializamos la variable
 	@BeforeEach
@@ -46,10 +31,13 @@ public class TestCalculadora_nmartin {
 
 	@Test
 	public void test_conmutativa_suma() {
-		double a = 12.9, b = -3.4;
+		double a = 12.8, b = -3.4;
 		double result = c.suma(a, b);
 		assert (b + a == result);
 	}
+	
+	//@Test
+	//public void suma_lackPrecision
 
 	// Tests para la resta
 	@Test
@@ -71,8 +59,10 @@ public class TestCalculadora_nmartin {
 	@Test
 	public void test_mult() {
 		for (double a = -10.0; a < 10.0; a += 1.0) {
-			for (double b = -10.0; b < 10.0; b += 1.0)
+			for (double b = -10.0; b < 10.0; b += 1.0) {
 				assertEquals(a * b, c.mult(a, b));
+			}
+				
 		}
 	}
 
@@ -133,5 +123,4 @@ public class TestCalculadora_nmartin {
 		assertFalse(c.esPrimo(-23));
 		assertFalse(c.esPrimo(-12));
 	}
-
 }
