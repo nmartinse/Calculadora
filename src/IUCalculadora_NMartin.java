@@ -1,4 +1,7 @@
 
+/**
+ * @author Nerea Martin
+ */
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -14,8 +17,8 @@ import java.awt.Color;
 
 public class IUCalculadora_NMartin {
 	/**
-	 * in: variable para guardad lo que el usuario introduce
-	 * out: variable que guarda lo que se va adevolver por pantalla
+	 * in: variable para guardad lo que el usuario introduce out: variable que
+	 * guarda lo que se va adevolver por pantalla
 	 */
 	private String in = new String();
 	private String out = new String();
@@ -85,6 +88,10 @@ public class IUCalculadora_NMartin {
 		textField.setBounds(10, 11, 229, 49);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
+
+		/**
+		 * Botones correspondientes a los numeros
+		 */
 
 		btnCeros = new JButton("00");
 		btnCeros.setForeground(Color.BLACK);
@@ -258,6 +265,10 @@ public class IUCalculadora_NMartin {
 		btnPoint.setBounds(68, 231, 55, 40);
 		frame.getContentPane().add(btnPoint);
 
+		/**
+		 * Botones para borrar
+		 */
+
 		btnDelete = new JButton("<-");
 		btnDelete.setForeground(Color.BLACK);
 		btnDelete.setBackground(new Color(204, 204, 255));
@@ -298,6 +309,11 @@ public class IUCalculadora_NMartin {
 		btnClear.setFont(new Font("Leelawadee", Font.BOLD, 14));
 		btnClear.setBounds(68, 71, 55, 40);
 		frame.getContentPane().add(btnClear);
+
+		/**
+		 * Botones con las operaciones aritméticas Hacen uso del metodo auxiliar
+		 * compruebaDobleOperacion(String, String )
+		 */
 
 		btnAdd = new JButton("+");
 		btnAdd.setForeground(Color.BLACK);
@@ -351,6 +367,11 @@ public class IUCalculadora_NMartin {
 		btnDiv.setBounds(184, 191, 55, 40);
 		frame.getContentPane().add(btnDiv);
 
+		/**
+		 * Boton para calcular el resultado de las operaciones arimeticas Hace uso del
+		 * metodo auxiliar procesarOperaciones()
+		 */
+
 		btnEqual = new JButton("=");
 		btnEqual.setForeground(Color.BLACK);
 		btnEqual.setBackground(new Color(204, 204, 255));
@@ -363,6 +384,12 @@ public class IUCalculadora_NMartin {
 		btnEqual.setFont(new Font("Leelawadee", Font.BOLD, 12));
 		btnEqual.setBounds(10, 275, 229, 40);
 		frame.getContentPane().add(btnEqual);
+
+		/**
+		 * Boton para comprobar si un numero es primo Hace uso de los metodos auxiliares
+		 * procesarOperaciones() y tranformaStringInt() Tiene en cuenta el signo del
+		 * nuemero que se quiere comprobar.
+		 */
 
 		btnPrimo = new JButton("primo");
 		btnPrimo.setForeground(Color.BLACK);
@@ -396,6 +423,11 @@ public class IUCalculadora_NMartin {
 		btnPrimo.setBounds(126, 231, 55, 40);
 		frame.getContentPane().add(btnPrimo);
 
+		/**
+		 * Boton para calcular el factorial de un numero Hace uso de los metodos
+		 * auxiliares procesarOperaciones() y tranformaStringInt()
+		 */
+
 		btnFact = new JButton("fact");
 		btnFact.setForeground(Color.BLACK);
 		btnFact.setBackground(new Color(204, 204, 255));
@@ -425,6 +457,12 @@ public class IUCalculadora_NMartin {
 
 	}
 
+	/**
+	 * Este metodo auxiliar se encarga porcesar una cadena de caracteres con
+	 * operaciones aritmeticas y calcular el resultado
+	 * 
+	 * @param intro: cadena de caracteres que se quiere procesar
+	 */
 	private void procesarOperaciones(String intro) {
 		try {
 			Double result, n2;
@@ -469,7 +507,12 @@ public class IUCalculadora_NMartin {
 			out = "Syntax error in " + in.toString() + ": reescriba correctamente";
 		}
 	}
-
+	
+	/**
+	 * Este metodo sirve para ver si el usuairo ha pulsado una vez el boton de una operacion o dos veces
+	 * @param intro: cadena con lo que el usuario a introducido
+	 * @param text: operacion aritmetica
+	 */
 	private void compruebaDobleOperacion(String intro, String text) {
 		text = " " + text + " ";
 		if (intro.endsWith(text)) {
@@ -481,7 +524,12 @@ public class IUCalculadora_NMartin {
 			out += text;
 		}
 	}
-
+	
+	/**
+	 * Transforma una cadena de caracteres tipo String a un Integer
+	 * @param intro: cadena de caracteres introducida por el usuario
+	 * @return numero al que correspode esa cadena
+	 */
 	private Integer tranformaStringInt(String intro) {
 		Double d = Double.parseDouble(intro);
 		Integer n = d.intValue();
