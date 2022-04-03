@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 
-public class IUCalculadora_NMartin {
+public class IUCalculadora_NMartinS {
 	/**
 	 * in: variable para guardad lo que el usuario introduce out: variable que
 	 * guarda lo que se va adevolver por pantalla
@@ -55,7 +55,7 @@ public class IUCalculadora_NMartin {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					IUCalculadora_NMartin window = new IUCalculadora_NMartin();
+					IUCalculadora_NMartinS window = new IUCalculadora_NMartinS();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -67,7 +67,7 @@ public class IUCalculadora_NMartin {
 	/**
 	 * Create the application.
 	 */
-	public IUCalculadora_NMartin() {
+	public IUCalculadora_NMartinS() {
 		initialize();
 	}
 
