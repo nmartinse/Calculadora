@@ -524,7 +524,6 @@ public class IUCalculadora_NMartin {
 			out += text;
 		}
 	}
-
 	
 	/**
 	 * Transforma una cadena de caracteres tipo String a un Integer
